@@ -16,14 +16,14 @@ public class ImageRepo {
         try {                
             BufferedImage bi = ImageIO.read(getClass().getResourceAsStream(name));
             ImageData imageData = new ImageData(name, bi); 
-            repo.put(name, imageData);            
+            repo.put(name, imageData);
             return imageData;
         } catch (IOException e) {
             throw new RuntimeException("Error reading image", e);
         }
     }
-    
-    public Collection<ImageData> getImages() {
-        return repo.values();
+
+    public ImageData getImage(String name) {
+        return repo.get(name);
     }
 }

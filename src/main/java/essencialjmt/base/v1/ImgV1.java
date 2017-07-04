@@ -1,4 +1,4 @@
-package essencialjmt.intro.img.v1;
+package essencialjmt.base.v1;
 
 import javax.imageio.ImageIO;
 

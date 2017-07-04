@@ -1,4 +1,4 @@
-package essencialjmt.intro;
+package essencialjmt.base;
 
 import java.lang.Thread.State;
 import java.util.Arrays;

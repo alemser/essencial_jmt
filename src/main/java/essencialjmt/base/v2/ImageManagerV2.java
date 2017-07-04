@@ -1,4 +1,4 @@
-package essencialjmt.intro.img.v2;
+package essencialjmt.base.v2;
 
 import java.util.Arrays;
 import java.util.List;

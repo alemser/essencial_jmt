@@ -1,6 +1,6 @@
-package essencialjmt.intro;
+package essencialjmt.base;
 
-import static essencialjmt.intro.ThreadUtil.*;
+import static essencialjmt.base.ThreadUtil.*;
 
 import java.util.concurrent.atomic.AtomicInteger;
 

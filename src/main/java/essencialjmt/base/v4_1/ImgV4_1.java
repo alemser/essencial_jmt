@@ -1,9 +1,9 @@
-package essencialjmt.intro.img.v2;
+package essencialjmt.base.v4_1;
 
 import javax.imageio.ImageIO;
 
-public class ImgV2 {
-    static ImageManagerV2 imageManager = new ImageManagerV2();
+public class ImgV4_1 {
+    static ImageManagerV4_1 imageManager = new ImageManagerV4_1();
     static String[] imageNames = { "/img1.jpg", "/img2.jpg", "/img3.jpg", "/img4.jpg", "/img5.jpg", "/img6.jpg", "/img7.jpg", "/img8.jpg",
             "/img9.jpg", "/img10.jpg" };
 

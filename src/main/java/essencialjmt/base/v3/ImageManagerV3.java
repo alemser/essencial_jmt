@@ -1,4 +1,4 @@
-package essencialjmt.intro.img.v3;
+package essencialjmt.base.v3;
 
 import java.util.*;
 import java.util.concurrent.*;

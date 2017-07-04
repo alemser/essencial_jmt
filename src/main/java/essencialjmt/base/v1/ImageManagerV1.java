@@ -1,6 +1,6 @@
-package essencialjmt.intro.img.v1;
+package essencialjmt.base.v1;
 
-import static essencialjmt.intro.ThreadUtil.*;
+import static essencialjmt.base.ThreadUtil.*;
 
 import java.util.Arrays;
 import java.util.List;
