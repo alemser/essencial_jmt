@@ -8,7 +8,7 @@ public class ImageViewer {
 
     public void display(ImageData data) {
         if (enabled) {
-            System.out.print(data);
+            System.out.println(data);
         }
     }
 
