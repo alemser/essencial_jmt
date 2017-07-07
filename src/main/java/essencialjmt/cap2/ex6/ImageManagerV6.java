@@ -5,7 +5,7 @@ import java.util.concurrent.CompletableFuture;
 
 import essencialjmt.*;
 
-public class ImageManagerV5 {
+public class ImageManagerV6 {
 
     private ImageRepo imageRepo = new ImageRepo();
     private ImageViewer imageViewer = new ImageViewer();

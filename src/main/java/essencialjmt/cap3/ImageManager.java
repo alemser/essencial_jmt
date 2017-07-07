@@ -1,4 +1,4 @@
-package essencialjmt.cap3.ex1;
+package essencialjmt.cap3;
 
 import java.util.HashSet;
 import java.util.Set;

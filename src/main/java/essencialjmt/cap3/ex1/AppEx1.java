@@ -3,9 +3,11 @@ package essencialjmt.cap3.ex1;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.ExecutionException;
 
-public class App {
+import essencialjmt.cap3.Source;
 
-    public App() throws InterruptedException, ExecutionException {
+public class AppEx1 {
+
+    public AppEx1() throws InterruptedException, ExecutionException {
         Source source = new Source(Producer.getDeathPillId());
         
         Producer producer = new Producer(source, 2);
@@ -15,6 +17,6 @@ public class App {
     }
 
     public static void main(String[] args) throws InterruptedException, ExecutionException {
-        new App();
+        new AppEx1();
     }
 }

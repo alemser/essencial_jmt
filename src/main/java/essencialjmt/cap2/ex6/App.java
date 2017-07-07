@@ -8,7 +8,7 @@ import essencialjmt.ImageData;
 
 public class App {
 
-    static ImageManagerV5 imageManager = new ImageManagerV5();
+    static ImageManagerV6 imageManager = new ImageManagerV6();
     static String[] imageNames = { "/img1.jpg", "/img2.jpg", "/img3.jpg", "/img4.jpg", "/img5.jpg", "/img6.jpg", "/img7.jpg", "/img8.jpg",
             "/img9.jpg", "/img10.jpg" };
 
