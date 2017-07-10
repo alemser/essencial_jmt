@@ -27,7 +27,7 @@ public class ImageManagerV5 {
                 colors.add(pixel);
             }
         }
-        data.setNumberOfColors(colors.size());
+        data.setColors(colors);
         return data;
     }
 

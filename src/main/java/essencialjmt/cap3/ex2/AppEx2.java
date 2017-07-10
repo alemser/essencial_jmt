@@ -10,7 +10,7 @@ public class AppEx2 {
     
     private Source source = new Ex2Source(Producer.getDeathPillId());    
 
-    public AppEx2() throws InterruptedException, ExecutionException {
+    public void process() throws InterruptedException, ExecutionException {
         Producer producer = new Producer(source, 2);
         runProduction(producer, 3);
     }
@@ -36,6 +36,6 @@ public class AppEx2 {
     }
 
     public static void main(String[] args) throws InterruptedException, ExecutionException {
-        new AppEx2();
+        new AppEx2().process();
     }
 }

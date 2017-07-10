@@ -3,25 +3,23 @@ package essencialjmt.cap3;
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.LinkedBlockingQueue;
 
-import essencialjmt.ImageData;
-
 public class Printer implements Runnable {
 
-    private BlockingQueue<ImageData> queue = new LinkedBlockingQueue<>();
-
-    public void print(ImageData data) {
+    private BlockingQueue<Object> queue = new LinkedBlockingQueue<>();
+    
+    public void print(Object data) {
         queue.add(data);
     }
 
     public void end() {
-        queue.add(new ImageData(null, null));
+        queue.add("bye");
     }
 
     @Override
     public void run() {
-        ImageData data;
+        Object data;
         try {
-            while ((data = queue.take()).getName() != null) {
+            while (!"bye".equals((data = queue.take()))) {
                 System.out.println(data);
             }
         } catch (InterruptedException e) {

@@ -7,7 +7,7 @@ import essencialjmt.cap3.Source;
 
 public class AppEx1 {
 
-    public AppEx1() throws InterruptedException, ExecutionException {
+    public void process () throws InterruptedException, ExecutionException {
         Source source = new Source(Producer.getDeathPillId());
         
         Producer producer = new Producer(source, 2);
@@ -17,6 +17,6 @@ public class AppEx1 {
     }
 
     public static void main(String[] args) throws InterruptedException, ExecutionException {
-        new AppEx1();
+        new AppEx1().process();
     }
 }

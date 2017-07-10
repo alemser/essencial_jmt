@@ -6,18 +6,18 @@ import java.util.Set;
 import essencialjmt.ImageData;
 
 public class ImageManager {
-
+    
     public ImageData countColours(ImageData data) {
         Set<Integer> colors = new HashSet<Integer>();
         int w = data.getBufferedImage().getWidth();
         int h = data.getBufferedImage().getHeight();
         for (int y = 0; y < h; y++) {
             for (int x = 0; x < w; x++) {
-                int pixel = data.getBufferedImage().getRGB(x, y);
+                int pixel = data.getBufferedImage().getRGB(x, y);                
                 colors.add(pixel);
             }
         }
-        data.setNumberOfColors(colors.size());
+        data.setColors(colors);
         return data;
     }
 

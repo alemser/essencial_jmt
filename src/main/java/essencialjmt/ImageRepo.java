@@ -26,4 +26,8 @@ public class ImageRepo {
     public ImageData getImage(String name) {
         return repo.get(name);
     }
+    
+    public Collection<ImageData> getImageData() {
+        return repo.values();
+    }
 }

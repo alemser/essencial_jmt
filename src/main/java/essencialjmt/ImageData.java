@@ -10,10 +10,12 @@ import java.util.concurrent.locks.ReentrantReadWriteLock.WriteLock;
 public class ImageData {
     private BufferedImage bufferedImage;
     private String name;
-    private Integer numberOfColors;
+    private Set<Integer> singleColors;
     private String resolution;
+    
     private AtomicInteger likes = new AtomicInteger(0);
     private List<String> comments = new ArrayList<>();
+    
     private ReentrantReadWriteLock lock = new ReentrantReadWriteLock();
     private ReadLock readLock = lock.readLock();
     private WriteLock writeLock = lock.writeLock();
@@ -24,11 +26,11 @@ public class ImageData {
     }
 
     public Integer getNumberOfColors() {
-        return numberOfColors;
+        return singleColors.size();
     }
 
-    public void setNumberOfColors(final Integer numberOfColors) {
-        this.numberOfColors = numberOfColors;
+    public void setColors(Set<Integer> listOfSingleColors) {
+        this.singleColors = listOfSingleColors;
     }
 
     public String getResolution() {
@@ -49,7 +51,7 @@ public class ImageData {
 
     @Override
     public String toString() {
-        return name + " (" + (numberOfColors != null ? "#colors: " + numberOfColors : "") + (resolution != null ? "; res: " + resolution : "") + ") ";
+        return name + " (" + (singleColors != null ? "#colors: " + singleColors.size() : "") + (resolution != null ? "; res: " + resolution : "") + ") ";
     }
 
     public List<String> getComments() {
@@ -102,5 +104,9 @@ public class ImageData {
 
     public int getLikes() {
         return likes.get();
+    }
+
+    public Set<Integer> getSingleColors() {
+        return singleColors;
     }
 }
