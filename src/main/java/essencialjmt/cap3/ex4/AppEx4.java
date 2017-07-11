@@ -1,7 +1,7 @@
 package essencialjmt.cap3.ex4;
 
 import java.util.*;
-import java.util.concurrent.*;
+import java.util.concurrent.ExecutionException;
 import java.util.stream.Collectors;
 
 import essencialjmt.ImageData;
@@ -38,19 +38,11 @@ public class AppEx4 {
         final Set<Integer> dropped = new HashSet<>();
         final Set<Integer> completed = new HashSet<>();
         final Set<Integer> consumed = new HashSet<>();
-        Flowable.range(1, 1_000_000).onBackpressureDrop(dropped::add).observeOn(Schedulers.computation()).doOnNext(completed::add).subscribe(n -> consumed.add(n),
-                Throwable::printStackTrace);
+        Flowable.range(1, 1_000_000).onBackpressureDrop(dropped::add).observeOn(Schedulers.computation()).doOnNext(completed::add)
+                .subscribe(n -> consumed.add(n), Throwable::printStackTrace);
         System.out.println("Dropped: " + dropped.size());
         System.out.println("Completed: " + completed.size());
         System.out.println("Consumed: " + completed.size());
-    }
-    
-    public void process5() {
-        ImageData data = repo.loadImage("/img1.jpg");
-        imageManager.countColours(data);
-        
-        
-        Flowable.fromIterable(data.getSingleColors()).sample(100, TimeUnit.MILLISECONDS).subscribe(System.out::println);
     }
 
     public void processImageData(List<ImageData> images) {
@@ -69,9 +61,9 @@ public class AppEx4 {
 
     public static void main(String[] args) throws InterruptedException, ExecutionException {
         AppEx4 ex4 = new AppEx4();
-        /*
-         * ex4.process(); ex4.process2(); ex4.process3();ex4.process4();
-         */
-        ex4.process5();
+        ex4.process();
+        ex4.process2();
+        ex4.process3();
+        ex4.process4();
     }
 }

@@ -6,7 +6,6 @@ import java.util.Iterator;
 public class IterableSource extends Source implements Iterator<String>, Iterable<String>{
 
     private static final String DEATH_PILL = "#/";
-    private String currentInput;
 
     public IterableSource() {
         super(DEATH_PILL);
@@ -14,13 +13,12 @@ public class IterableSource extends Source implements Iterator<String>, Iterable
     
     @Override
     public boolean hasNext() {
-        currentInput = getInput();
-        return currentInput.equals(DEATH_PILL) ? false : true;
+        return DEATH_PILL.equals(source.peek()) ? false : true;
     }
 
     @Override
     public String next() {
-        return currentInput;
+        return getInput();
     }
 
     @Override

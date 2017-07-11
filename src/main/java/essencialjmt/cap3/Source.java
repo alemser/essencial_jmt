@@ -7,11 +7,11 @@ import java.util.concurrent.LinkedBlockingQueue;
 
 public class Source {
 
-    private BlockingQueue<String> source = new LinkedBlockingQueue<>();
+    BlockingQueue<String> source = new LinkedBlockingQueue<>();
 
     public Source(String deathPill) {
         new Thread(() -> {
-            getImageNames().stream().forEach(source::add);
+            getImageNames().forEach(source::add);
             source.add(deathPill);
         }).start();
     }

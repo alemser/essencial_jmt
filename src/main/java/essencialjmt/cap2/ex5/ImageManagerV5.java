@@ -1,5 +1,6 @@
 package essencialjmt.cap2.ex5;
 
+import java.awt.Color;
 import java.util.*;
 import java.util.concurrent.CompletableFuture;
 
@@ -18,13 +19,12 @@ public class ImageManagerV5 {
     }
 
     ImageData countColours(ImageData data) {
-        Set<Integer> colors = new HashSet<Integer>();
+        Set<Color> colors = new HashSet<Color>();
         int w = data.getBufferedImage().getWidth();
         int h = data.getBufferedImage().getHeight();
         for (int y = 0; y < h; y++) {
             for (int x = 0; x < w; x++) {
-                int pixel = data.getBufferedImage().getRGB(x, y);
-                colors.add(pixel);
+                colors.add(new Color(data.getBufferedImage().getRGB(x, y)));
             }
         }
         data.setColors(colors);

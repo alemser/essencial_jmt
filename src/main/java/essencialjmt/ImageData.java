@@ -1,5 +1,6 @@
 package essencialjmt;
 
+import java.awt.Color;
 import java.awt.image.BufferedImage;
 import java.util.*;
 import java.util.concurrent.atomic.AtomicInteger;
@@ -10,7 +11,7 @@ import java.util.concurrent.locks.ReentrantReadWriteLock.WriteLock;
 public class ImageData {
     private BufferedImage bufferedImage;
     private String name;
-    private Set<Integer> singleColors;
+    private Set<Color> singleColors;
     private String resolution;
     
     private AtomicInteger likes = new AtomicInteger(0);
@@ -29,7 +30,7 @@ public class ImageData {
         return singleColors.size();
     }
 
-    public void setColors(Set<Integer> listOfSingleColors) {
+    public void setColors(Set<Color> listOfSingleColors) {
         this.singleColors = listOfSingleColors;
     }
 
@@ -106,7 +107,7 @@ public class ImageData {
         return likes.get();
     }
 
-    public Set<Integer> getSingleColors() {
+    public Set<Color> getSingleColors() {
         return singleColors;
     }
 }
