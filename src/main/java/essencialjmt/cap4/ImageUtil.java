@@ -18,10 +18,9 @@ public class ImageUtil {
     }
     
     public static BufferedImage createThumbnail(BufferedImage originalBufferedImage) {
-        int thumbnailWidth = 150;
+        int thumbnailWidth = 75;
         int widthToScale, heightToScale;
         if (originalBufferedImage.getWidth() > originalBufferedImage.getHeight()) {
-
             heightToScale = (int) (1.1 * thumbnailWidth);
             widthToScale = (int) ((heightToScale * 1.0) / originalBufferedImage.getHeight() * originalBufferedImage.getWidth());
 
@@ -40,14 +39,7 @@ public class ImageUtil {
 
         g.drawImage(originalBufferedImage, 0, 0, widthToScale, heightToScale, null);
         g.dispose();
-
-        int x = (resizedImage.getWidth() - thumbnailWidth) / 2;
-        int y = (resizedImage.getHeight() - thumbnailWidth) / 2;
-
-        if (x < 0 || y < 0) {
-            throw new IllegalArgumentException("Width of new thumbnail is bigger than original image");
-        }
-        return resizedImage.getSubimage(x, y, thumbnailWidth, thumbnailWidth);
+        return resizedImage;
     }
     
 }

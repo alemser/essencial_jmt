@@ -1,4 +1,4 @@
-package essencialjmt.cap4;
+package essencialjmt.cap4.web;
 
 import java.awt.image.BufferedImage;
 import java.io.IOException;
@@ -9,9 +9,10 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.*;
 
 import essencialjmt.ImageRepo;
+import essencialjmt.cap4.ImageUtil;
 
-@WebServlet(asyncSupported = true, value = "/AlbumLoaderServlet")
-public class AlbumLoaderServlet extends HttpServlet {
+@WebServlet(asyncSupported = true, value = "/ImageLoaderServlet")
+public class ImageLoaderServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
 
     @Override
