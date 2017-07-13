@@ -5,9 +5,9 @@ import java.util.List;
 
 import essencialjmt.cap3.Source;
 
-public class Ex2Source extends Source {
+public class BadImageSource extends Source {
     
-    public Ex2Source(String deathPill) {
+    public BadImageSource(String deathPill) {
         super(deathPill);
     }
 

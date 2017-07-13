@@ -1,9 +1,7 @@
-package essencialjmt.cap3;
+package essencialjmt;
 
 import java.awt.Color;
 import java.util.*;
-
-import essencialjmt.ImageData;
 
 public class ImageManager {
     

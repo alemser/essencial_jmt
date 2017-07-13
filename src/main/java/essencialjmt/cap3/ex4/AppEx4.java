@@ -4,9 +4,9 @@ import java.util.*;
 import java.util.concurrent.ExecutionException;
 import java.util.stream.Collectors;
 
-import essencialjmt.ImageData;
-import essencialjmt.ImageRepo;
-import essencialjmt.cap3.*;
+import essencialjmt.*;
+import essencialjmt.cap3.IterableSource;
+import essencialjmt.cap3.Printer;
 import io.reactivex.Flowable;
 import io.reactivex.schedulers.Schedulers;
 
@@ -14,10 +14,10 @@ public class AppEx4 {
 
     private Printer printer = new Printer();
     private ImageManager imageManager = new ImageManager();
-    private ImageRepo repo = new ImageRepo();
+    private Repository repo = new Repository();
 
     public void process() {
-        Flowable.fromIterable(IterableSource::new).map(repo::loadImage).doAfterNext(System.out::println).subscribe(this::processImageData);
+        Flowable.fromIterable(IterableSource::new).map(repo::findImageByName).doAfterNext(System.out::println).subscribe(this::processImageData);
     }
 
     public void process2() {
@@ -26,9 +26,9 @@ public class AppEx4 {
 
     public void process3() {
         new Thread(printer).start();
-        Flowable.fromIterable(IterableSource::new).onBackpressureDrop().observeOn(Schedulers.io()).doOnNext(repo::loadImage)
+        Flowable.fromIterable(IterableSource::new).onBackpressureDrop().observeOn(Schedulers.io()).doOnNext(repo::findImageByName)
                 .doOnComplete(printer::end).doOnError(e -> printer.end()).subscribe(name -> {
-                    ImageData data = repo.loadImage(name);
+                    ImageData data = repo.findImageByName(name);
                     processImageData(data);
                     printer.print(data);
                 });
@@ -56,7 +56,7 @@ public class AppEx4 {
     }
 
     public List<ImageData> loadImage(List<String> names) {
-        return names.stream().map(repo::loadImage).collect(Collectors.toList());
+        return names.stream().map(repo::findImageByName).collect(Collectors.toList());
     }
 
     public static void main(String[] args) throws InterruptedException, ExecutionException {

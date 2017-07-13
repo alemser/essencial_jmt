@@ -8,9 +8,9 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.*;
 
 import essencialjmt.ImageData;
-import essencialjmt.cap3.ImageManager;
+import essencialjmt.ImageManager;
 import essencialjmt.cap4.AsyncIterable;
-import essencialjmt.cap4.Repository;
+import essencialjmt.cap4.ReactiveRepository;
 import io.reactivex.parallel.ParallelFlowable;
 
 @WebServlet(asyncSupported = true, value = "/ImageProcesserServlet")
@@ -18,7 +18,7 @@ public class ImageProcesserServlet extends HttpServlet {
 
     private static final long serialVersionUID = 1L;
 
-    private Repository repository = new Repository();
+    private ReactiveRepository repository = new ReactiveRepository();
     private ImageManager imgMng = new ImageManager();
 
     @Override

@@ -1,7 +1,7 @@
 package essencialjmt.cap3.ex2;
 
 import essencialjmt.ImageData;
-import essencialjmt.cap3.ImageManager;
+import essencialjmt.ImageManager;
 import essencialjmt.cap3.Work;
 
 public class Consumer implements Runnable {

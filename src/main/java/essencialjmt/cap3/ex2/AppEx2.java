@@ -8,7 +8,7 @@ import essencialjmt.cap3.Source;
 
 public class AppEx2 {
     
-    private Source source = new Ex2Source(Producer.getDeathPillId());    
+    private Source source = new BadImageSource(Producer.getDeathPillId());    
 
     public void process() throws InterruptedException, ExecutionException {
         Producer producer = new Producer(source, 2);

@@ -2,17 +2,18 @@ package essencialjmt;
 
 import java.awt.image.BufferedImage;
 import java.io.IOException;
-import java.util.*;
+import java.util.HashMap;
+import java.util.Map;
 
 import javax.imageio.ImageIO;
 
 /**
  * Simulates a repository of images.
  */
-public class ImageRepo {
+public class Repository {
     private Map<String, ImageData> repo = new HashMap<>();
     
-    public ImageData loadImage(final String name) {
+    public ImageData findImageByName(final String name) {
         try {                
             BufferedImage bi = ImageIO.read(getClass().getResourceAsStream(name));
             ImageData imageData = new ImageData(name, bi); 
@@ -22,12 +23,12 @@ public class ImageRepo {
             throw new RuntimeException("Error reading image", e);
         }
     }
-
-    public ImageData getImage(String name) {
+    
+    public ImageData getFromCache(String name) {
         return repo.get(name);
     }
     
-    public Collection<ImageData> getImageData() {
-        return repo.values();
+    static {
+        ImageIO.setUseCache(false);
     }
 }

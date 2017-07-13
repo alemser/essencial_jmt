@@ -4,13 +4,13 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.*;
 
-import essencialjmt.ImageRepo;
+import essencialjmt.Repository;
 import essencialjmt.cap3.Source;
 import essencialjmt.cap3.Work;
 
 public class Producer implements Runnable {
 
-    private ImageRepo repo = new ImageRepo();
+    private Repository repo = new Repository();
     private Work work = new Work();
     private List<CompletableFuture<?>> futures = new ArrayList<>();
     private Source source;
@@ -41,7 +41,7 @@ public class Producer implements Runnable {
                 }
 
                 System.out.println("Producing " + name);
-                work.produce(repo.loadImage(name));
+                work.produce(repo.findImageByName(name));
             }
 
             System.out.println("\nEnd of production");

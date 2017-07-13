@@ -8,7 +8,7 @@ import javax.servlet.*;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.*;
 
-import essencialjmt.ImageRepo;
+import essencialjmt.Repository;
 import essencialjmt.cap4.ImageUtil;
 
 @WebServlet(asyncSupported = true, value = "/ImageLoaderServlet")
@@ -24,7 +24,7 @@ public class ImageLoaderServlet extends HttpServlet {
 
     private void writeImage(String imageName, ServletResponse response) {
         try {
-            BufferedImage originalBufferedImage = new ImageRepo().loadImage(imageName).getBufferedImage();
+            BufferedImage originalBufferedImage = new Repository().findImageByName(imageName).getBufferedImage();
             BufferedImage thumbnailBufferedImage = ImageUtil.createThumbnail(originalBufferedImage);
             ImageUtil.write(response.getOutputStream(), thumbnailBufferedImage);
         } catch (Exception e) {
