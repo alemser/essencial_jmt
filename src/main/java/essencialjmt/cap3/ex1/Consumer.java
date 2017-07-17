@@ -30,7 +30,7 @@ public class Consumer implements Runnable {
             e.printStackTrace();
         }
     }
-    
+
     public static ImageData createDeathPill() {
         return new ImageData(null, null);
     }

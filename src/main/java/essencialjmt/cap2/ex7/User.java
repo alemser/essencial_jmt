@@ -1,4 +1,4 @@
-package essencialjmt.cap2.ex6;
+package essencialjmt.cap2.ex7;
 
 import essencialjmt.ImageData;
 import essencialjmt.Repository;

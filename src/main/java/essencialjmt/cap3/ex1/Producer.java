@@ -11,7 +11,7 @@ public class Producer implements Runnable {
     
     private Repository repo = new Repository();
     private Work work = new Work();
-    private List<CompletableFuture<?>> futures = new ArrayList<>();
+    private List<CompletableFuture<?>> consumerFutures = new ArrayList<>();
     private Source source;
     private int consumerCount;
     
@@ -21,7 +21,7 @@ public class Producer implements Runnable {
         
         ExecutorService executor = Executors.newFixedThreadPool(4);
         for (int i = 0; i < consumerCount; i++) {
-            futures.add(CompletableFuture.runAsync(new Consumer(work), executor));
+            consumerFutures.add(CompletableFuture.runAsync(new Consumer(work), executor));
         }
         executor.shutdown();
     }
@@ -44,7 +44,7 @@ public class Producer implements Runnable {
                 work.produce(Consumer.createDeathPill());
             }
             
-            for (CompletableFuture<?> completableFuture : futures) {
+            for (CompletableFuture<?> completableFuture : consumerFutures) {
                 completableFuture.get();
             }
         } catch (InterruptedException | ExecutionException e) {
