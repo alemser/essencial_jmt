@@ -38,9 +38,9 @@ public class Exercise7 implements ImageListener {
     private List<User> createUsers() {
         List<User> users = new ArrayList<>();
         for (int i = 0; i < 10; i++) {
-            users.add(new User("/img1.jpg", imageProcessor.getRepository()));
+            users.add(new User(imageProcessor.getRepository()));
             if (i % 2 == 0) {
-                users.add(new Moderator("/img1.jpg", "Client " + i, imageProcessor.getRepository()));
+                users.add(new Moderator("awful", imageProcessor.getRepository()));
             }
         }
         return users;
