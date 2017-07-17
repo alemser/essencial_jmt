@@ -1,9 +1,5 @@
 package essencialjmt.cap2.ex6;
 
-import java.util.concurrent.CompletableFuture;
-
-import essencialjmt.*;
-import essencialjmt.cap2.ImageProcessor;
 import essencialjmt.cap2.ex4.Exercise4;
 
 public class Exercise6 {

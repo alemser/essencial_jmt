@@ -2,112 +2,94 @@ package essencialjmt;
 
 import java.awt.Color;
 import java.awt.image.BufferedImage;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+import java.util.Set;
 import java.util.concurrent.atomic.AtomicInteger;
-import java.util.concurrent.locks.ReentrantReadWriteLock;
-import java.util.concurrent.locks.ReentrantReadWriteLock.ReadLock;
-import java.util.concurrent.locks.ReentrantReadWriteLock.WriteLock;
 
 public class ImageData {
-    private BufferedImage bufferedImage;
-    private String name;
-    private Set<Color> singleColors;
-    private String resolution;
-    
-    private AtomicInteger likes = new AtomicInteger(0);
-    private List<String> comments = new ArrayList<>();
-    
-    private ReentrantReadWriteLock lock = new ReentrantReadWriteLock();
-    private ReadLock readLock = lock.readLock();
-    private WriteLock writeLock = lock.writeLock();
+	private BufferedImage bufferedImage;
+	private String name;
+	private Set<Color> singleColors;
+	private String resolution;
 
-    public ImageData(final String name, final BufferedImage bufferedImage) {
-        this.name = name;
-        this.bufferedImage = bufferedImage;
-    }
+	private AtomicInteger likes = new AtomicInteger(0);
+	private List<String> comments = new ArrayList<>();
 
-    public Integer getNumberOfColors() {
-        return singleColors.size();
-    }
+	public ImageData(final String name, final BufferedImage bufferedImage) {
+		this.name = name;
+		this.bufferedImage = bufferedImage;
+	}
 
-    public void setColors(Set<Color> listOfSingleColors) {
-        this.singleColors = listOfSingleColors;
-    }
+	public Integer getNumberOfColors() {
+		return singleColors.size();
+	}
 
-    public String getResolution() {
-        return resolution;
-    }
+	public void setColors(Set<Color> listOfSingleColors) {
+		this.singleColors = listOfSingleColors;
+	}
 
-    public void setResolution(final String resolution) {
-        this.resolution = resolution;
-    }
+	public String getResolution() {
+		return resolution;
+	}
 
-    public BufferedImage getBufferedImage() {
-        return bufferedImage;
-    }
+	public void setResolution(final String resolution) {
+		this.resolution = resolution;
+	}
 
-    public String getName() {
-        return name;
-    }
+	public BufferedImage getBufferedImage() {
+		return bufferedImage;
+	}
 
-    @Override
-    public String toString() {
-        return name + " (" + (singleColors != null ? "#colors: " + singleColors.size() : "") + (resolution != null ? "; res: " + resolution : "") + ") ";
-    }
+	public String getName() {
+		return name;
+	}
 
-    public List<String> getComments() {
-        return Collections.unmodifiableList(comments);
-    }
-    
-    public boolean containsComment(String comment) {
-        readLock.lock();
-        try {
-            return comment.contains(comment);
-        } finally {
-            readLock.unlock();
-        }
-    }
+	public List<String> getComments() {
+		return Collections.unmodifiableList(comments);
+	}
 
-    public void excludeCommentsWith(String strToExclude) {
-        writeLock.lock();
-        try {
-            comments.removeIf(s -> s.contains(strToExclude));
-        } finally {
-            writeLock.unlock();
-        }
-    }
+	public boolean containsComment(String comment) {
+		return comment.contains(comment);
+	}
 
-    public void addComment(String... comments) {
-        writeLock.lock();
-        try {
-            if (this.comments.size() < 10) {
-                for (String comment : comments) {
-                    if (comment != null) {
-                        this.comments.add(comment);
-                    }
-                    if (this.comments.size() > 10) {
-                        break;
-                    }
-                }
-            }
-        } finally {
-            writeLock.unlock();
-        }
-    }
+	public void excludeCommentsWith(String strToExclude) {
+		comments.removeIf(s -> s.contains(strToExclude));
+	}
 
-    public int like() {
-        return likes.incrementAndGet();
-    }
+	public void addComment(String... comments) {
+		if (this.comments.size() < 10) {
+			for (String comment : comments) {
+				if (comment != null) {
+					this.comments.add(comment);
+				}
+				if (this.comments.size() > 10) {
+					break;
+				}
+			}
+		}
+	}
 
-    public int unlike() {
-        return likes.decrementAndGet();
-    }
+	public int like() {
+		return likes.incrementAndGet();
+	}
 
-    public int getLikes() {
-        return likes.get();
-    }
+	public int unlike() {
+		return likes.decrementAndGet();
+	}
 
-    public Set<Color> getSingleColors() {
-        return singleColors;
-    }
+	public int getLikes() {
+		return likes.get();
+	}
+
+	public Set<Color> getSingleColors() {
+		return singleColors;
+	}
+
+	@Override
+	public String toString() {
+		return name + " (" + (singleColors != null ? "#colors: " + singleColors.size() : "")
+				+ (resolution != null ? "; res: " + resolution : "") + ") ";
+	}
 }
