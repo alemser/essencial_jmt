@@ -2,8 +2,8 @@ package essencialjmt;
 
 import java.awt.image.BufferedImage;
 import java.io.IOException;
-import java.util.HashMap;
 import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
 
 import javax.imageio.ImageIO;
 
@@ -11,10 +11,11 @@ import javax.imageio.ImageIO;
  * Simulates a repository of images.
  */
 public class Repository {
-    private Map<String, ImageData> repo = new HashMap<>();
+    private Map<String, ImageData> repo = new ConcurrentHashMap<>();
+    private int cacheHits;
     
     public ImageData findImageByName(final String name) {
-        try {                
+        try {
             BufferedImage bi = ImageIO.read(getClass().getResourceAsStream(name));
             ImageData imageData = new ImageData(name, bi); 
             repo.put(name, imageData);
@@ -25,9 +26,17 @@ public class Repository {
     }
     
     public ImageData getFromCache(String name) {
-        return repo.get(name);
+        if (repo.containsKey(name)) {
+            cacheHits++;
+            return repo.get(name);
+        }
+        return findImageByName(name);
     }
     
+    public Integer getCacheHits() {
+        return cacheHits;
+    }
+
     static {
         ImageIO.setUseCache(false);
     }

@@ -1,7 +1,5 @@
 package essencialjmt.cap2.ex7;
 
-import java.util.UUID;
-
 import essencialjmt.ImageData;
 import essencialjmt.Repository;
 import essencialjmt.cap1.ThreadUtil;
@@ -12,7 +10,7 @@ public class Moderator extends User {
     private int count;
     
     public Moderator(String imageName, String stringToModerate, Repository repository) {
-        super(UUID.randomUUID().toString(), imageName, repository);
+        super(imageName, repository);
         this.stringToModerate = stringToModerate;
     }
 

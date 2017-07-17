@@ -1,16 +1,16 @@
 package essencialjmt.cap2.ex7;
 
+import java.util.Arrays;
+
 import essencialjmt.ImageData;
 import essencialjmt.Repository;
 
 public class User implements Runnable {
-    static boolean laskLike = false;
-    String name;
-    String imageName;
-    Repository repository;
+    private static boolean laskLike = false;
+    protected String imageName;
+    protected Repository repository;
 
-    public User(String name, String imageName, Repository repository) {
-        this.name = name;
+    public User(String imageName, Repository repository) {
         this.imageName = imageName;
         this.repository = repository;
     }
@@ -24,12 +24,8 @@ public class User implements Runnable {
             data.unlike();
         }
         laskLike = !laskLike;
-        
-        String[] comments = new String[10];
-        for (int i = 0; i < comments.length; i++) {
-            comments[i] = name + " comment number " + i;
-        }
-        data.addComment(comments);
+                
+        Arrays.stream(new String[]{"a", "b", "c", "d", "e"}).forEach(c -> data.addComment(c));
     }
 
 }

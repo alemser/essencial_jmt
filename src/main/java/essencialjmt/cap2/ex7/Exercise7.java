@@ -20,6 +20,7 @@ public class Exercise7 implements ImageListener {
         System.out.println("");
         System.out.println("Total commends for " + images[0] + ": " + data.getComments().size());
         System.out.println("Total like for " + images[0] + ": " + data.getLikes());
+        System.out.println("Total cache hits: " + imageProcessor.getRepository().getCacheHits());
     }
     
     public void simulateUserChanges() {
@@ -37,7 +38,7 @@ public class Exercise7 implements ImageListener {
     private List<User> createUsers() {
         List<User> users = new ArrayList<>();
         for (int i = 0; i < 10; i++) {
-            users.add(new User("Client " + i, "/img1.jpg", imageProcessor.getRepository()));
+            users.add(new User("/img1.jpg", imageProcessor.getRepository()));
             if (i % 2 == 0) {
                 users.add(new Moderator("/img1.jpg", "Client " + i, imageProcessor.getRepository()));
             }
