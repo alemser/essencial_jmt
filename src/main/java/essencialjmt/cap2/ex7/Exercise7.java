@@ -4,23 +4,10 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.CompletableFuture;
 
-import essencialjmt.ImageData;
-import essencialjmt.ImageListener;
-
-public class Exercise7 implements ImageListener {
-    private Ex7ImageProcessor imageProcessor = new Ex7ImageProcessor();
+public class Exercise7 {
 
     public Exercise7(String[] images) {
-        imageProcessor.addImageListener(this);
-        imageProcessor.loadAlbum(images);
-        
-        simulateUserChanges();
-        
-        ImageData data = imageProcessor.getRepository().getFromCache(images[0]);
-        System.out.println("");
-        System.out.println("Total commends for " + images[0] + ": " + data.getComments().size());
-        System.out.println("Total like for " + images[0] + ": " + data.getLikes());
-        System.out.println("Total cache hits: " + imageProcessor.getRepository().getCacheHits());
+                
     }
     
     public void simulateUserChanges() {
@@ -38,16 +25,12 @@ public class Exercise7 implements ImageListener {
     private List<User> createUsers() {
         List<User> users = new ArrayList<>();
         for (int i = 0; i < 10; i++) {
-            users.add(new User("/img1.jpg", imageProcessor.getRepository()));
+            users.add(new User(null));
             if (i % 2 == 0) {
-                users.add(new Moderator("/img1.jpg", "Client " + i, imageProcessor.getRepository()));
+                users.add(new Moderator("Client " + i, null));
             }
         }
         return users;
     }
 
-    @Override
-    public void imageProcessed(ImageData data) {
-        System.out.println(data);
-    }
 }

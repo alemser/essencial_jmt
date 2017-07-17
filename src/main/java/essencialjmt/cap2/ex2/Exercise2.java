@@ -1,12 +1,8 @@
 package essencialjmt.cap2.ex2;
 
-import essencialjmt.cap2.ImageProcessor;
-
 public class Exercise2 {
-    private ImageProcessor imageProcessor = new Ex2ImageProcessor();
     
     public Exercise2(String[] images) {
-        imageProcessor.loadAlbum(images);
     }
 
     public static void main(final String[] args) {
