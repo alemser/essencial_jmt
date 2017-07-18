@@ -1,8 +1,6 @@
 package essencialjmt.cap2.ex7;
 
-import essencialjmt.ImageData;
-import essencialjmt.Repository;
-import essencialjmt.cap1.ThreadUtil;
+import essencialjmt.*;
 
 public class Moderator extends User {
 

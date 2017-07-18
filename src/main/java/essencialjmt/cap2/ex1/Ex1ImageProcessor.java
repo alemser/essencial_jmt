@@ -1,6 +1,6 @@
 package essencialjmt.cap2.ex1;
 
-import static essencialjmt.cap1.ThreadUtil.*;
+import static essencialjmt.ThreadUtil.*;
 
 import java.util.Arrays;
 

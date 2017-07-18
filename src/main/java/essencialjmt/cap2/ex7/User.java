@@ -6,7 +6,6 @@ import essencialjmt.ImageData;
 import essencialjmt.Repository;
 
 public class User implements Runnable {
-    private boolean laskLike = false;
     protected Repository repository;
 
     public User(Repository repository) {
@@ -16,12 +15,14 @@ public class User implements Runnable {
     @Override
     public void run() {
         ImageData data = repository.getFromCache("/img1.jpg");
-        if( laskLike ) {
-            data.like();
-        } else {
-            data.unlike();
+        
+        for (int i = 0; i < 10; i++) {
+            if (i % 2 == 0) {
+                data.like();
+            } else {
+                data.unlike();
+            }
         }
-        laskLike = !laskLike;
                 
         Arrays.stream(new String[]{"cool", "original", "awful"}).forEach(data::addComment);
     }

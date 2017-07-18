@@ -1,6 +1,6 @@
 package essencialjmt.cap1;
 
-import static essencialjmt.cap1.ThreadUtil.*;
+import static essencialjmt.ThreadUtil.*;
 
 public class Intro2_0 {
 
