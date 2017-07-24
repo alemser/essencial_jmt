@@ -1,6 +1,7 @@
 package essentialjmt.cap2.ex7;
 
-import essentialjmt.*;
+import essentialjmt.ImageData;
+import essentialjmt.Repository;
 
 public class Moderator extends User {
 
@@ -20,7 +21,11 @@ public class Moderator extends User {
                 break;
             }
             data.excludeCommentsWith(stringToModerate);
-            ThreadUtil.sleep(10);
+            try {
+				Thread.sleep(10);
+			} catch (InterruptedException e) {
+				Thread.currentThread().interrupt();
+			}
             count++;
         }
     }
