@@ -1,5 +1,5 @@
-<%@page import="essencialjmt.ImageData"%>
-<%@page import="essencialjmt.cap4.AsyncIterable"%>
+<%@page import="essentialjmt.ImageData"%>
+<%@page import="essentialjmt.cap4.AsyncIterable"%>
 <html>
 
 <body>
